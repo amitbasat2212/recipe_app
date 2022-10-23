@@ -11,9 +11,13 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 const ModelSinglton = new Model();
 const RenderSinglton = new Render();
 const ingrident = document.querySelector('#ingrident_input');
-function getRecipes() {
+const gluten = document.querySelector('#gluten');
+;
+const diary = document.querySelector('#diary');
+;
+function getRecipes(gluten, diary) {
     return __awaiter(this, void 0, void 0, function* () {
-        const recipes = yield ModelSinglton.getRecipes(ingrident.value);
+        const recipes = yield ModelSinglton.getRecipes(ingrident.value, gluten, diary);
         console.log(recipes);
         if (!Array.isArray(recipes)) {
             RenderSinglton.RenderEmptyRecipes();
@@ -25,5 +29,5 @@ function getRecipes() {
     });
 }
 $('#search').on('click', function () {
-    getRecipes();
+    getRecipes(gluten === null || gluten === void 0 ? void 0 : gluten.checked, diary === null || diary === void 0 ? void 0 : diary.checked);
 });

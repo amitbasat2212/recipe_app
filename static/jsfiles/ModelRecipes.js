@@ -9,14 +9,29 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 class Model {
-    getRecipes(ingredinet) {
+    requestToRecipe(ingredinet, param) {
         return __awaiter(this, void 0, void 0, function* () {
-            let recipes;
+            const urlGetRecipes = `/recipes/?sensitivity=${param}&ingredient=${ingredinet}`;
+            const recipesJson = yield $.get(urlGetRecipes);
+            const recipes = this.createRecipes(recipesJson);
+            return recipes;
+        });
+    }
+    getRecipes(ingredinet, gluten, diary) {
+        return __awaiter(this, void 0, void 0, function* () {
             try {
-                const urlGetDreamTeam = `/recipes/${ingredinet}`;
-                recipes = yield $.get(urlGetDreamTeam);
-                const players = this.createRecipes(recipes);
-                return players;
+                const urlGetRecipes = `/recipes/${ingredinet}`;
+                const recipesJson = yield $.get(urlGetRecipes);
+                let recipes = this.createRecipes(recipesJson);
+                if (gluten) {
+                    recipes = yield this.requestToRecipe(ingredinet, "gluten");
+                    return recipes;
+                }
+                else if (diary) {
+                    recipes = yield this.requestToRecipe(ingredinet, "dairy");
+                    return recipes;
+                }
+                return recipes;
             }
             catch (err) {
                 return { err: err };
@@ -25,11 +40,11 @@ class Model {
     }
     createRecipes(getRecpies) {
         return __awaiter(this, void 0, void 0, function* () {
-            const Players = [];
+            const resepics = [];
             getRecpies.forEach((element) => {
-                Players.push(new Resepics(element.ingredients, element.title, element.thumbnail, element.href));
+                resepics.push(new Resepics(element.ingredients, element.title, element.thumbnail, element.href));
             });
-            return Players;
+            return resepics;
         });
     }
 }

@@ -7,6 +7,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://twitter.github.io/typeahead.js/js/handlebars.js"></script>
     <!-- CSS only -->
+    <link rel="stylesheet" type="text/css" href="static/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
     <title>Document</title>
 </head>
@@ -19,9 +20,9 @@
     <div class="ingridents input-group mb-3">
         <div class="input-group-text">
           <input id="gluten" class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
-          <h5 class="birth-date-discription">diary</h5> 
+          <h5 class="gluten-discription">diary</h5> 
           <input id="diary" class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
-          <h5 class="birth-date-discription">gluten</h5>    
+          <h5 class="diary-discription">gluten</h5>    
         </div>   
                
     </div>
@@ -45,11 +46,13 @@
         {{#each results}}   
          <div class="col">
              <div class="card h-300">                    
-               <img id="Imagerecipe" src="{{href}}" alt="" onerror="if (this.src != 'Sorry, that player was not found. Please check the spelling.') this.src = 'defult.png';" class="card-img-top image-max" >             
+               <img id="Imagerecipe" src="{{thumbnail}}" alt="" class="card-img-top image-max" >             
                <div class="card-body">
-               
+                 <a class="card-href card-href">{{href}}</a>
                  <h2 class="card-title card-title">{{title}} </h2>
-                 <h2 class="card-thumbnail card-title">{{thumbnail}}</h2>                 
+                {{#each ingredients}}     
+                 <h2 class="card-ingredients card-ingredients">{{this}} </h2>
+                {{/each}}               
                
                </div>
        

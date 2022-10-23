@@ -1,3 +1,11 @@
 #image-max{
     max-height:300px;
 }
+
+.input-group-text{
+    margin-right:20px;
+}
+
+.discriptieon{
+   margin-left:10px ;     
+}

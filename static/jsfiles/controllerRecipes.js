@@ -31,3 +31,7 @@ function getRecipes(gluten, diary) {
 $('#search').on('click', function () {
     getRecipes(gluten === null || gluten === void 0 ? void 0 : gluten.checked, diary === null || diary === void 0 ? void 0 : diary.checked);
 });
+$('body').on('click', '#Imagerecipe', function () {
+    const the_first_ingrident = $(this).closest(".card").find(".card-ingredients").first().text();
+    alert(the_first_ingrident);
+});

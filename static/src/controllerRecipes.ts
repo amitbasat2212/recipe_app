@@ -21,5 +21,11 @@ $('#search').on('click',function(){
     
 });
 
+$('body').on('click','#Imagerecipe',function(){
+    const the_first_ingrident:String =$(this).closest(".card").find(".card-ingredients").first().text()
+    alert(the_first_ingrident)
+    
+});
+
 
 

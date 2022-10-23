@@ -1,11 +1,11 @@
 use recipes_app;
 
 
--- CREATE TABLE ingredients(
---     type_ingrident VARCHAR(40),
---     ingredient_name VARCHAR(40) NOT NULL PRIMARY KEY
+CREATE TABLE ingredients(
+    type_ingrident VARCHAR(40),
+    ingredient_name VARCHAR(40) NOT NULL PRIMARY KEY
 
--- );
+);
 
 INSERT INTO ingredients  
 VALUES 

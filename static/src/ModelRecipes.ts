@@ -7,7 +7,7 @@ class Model{
         return recipes;
     }
 
-    async getRecipes(ingredinet:String,gluten:boolean,diary:boolean):Promise<Resepics [] | Object> {                                 
+    async getRecipes(ingredinet:String,diary:boolean,gluten:boolean):Promise<Resepics [] | Object> {                                 
        
         try{   
             const urlGetRecipes = `/recipes/${ingredinet}`;                  

@@ -17,7 +17,7 @@ class Model {
             return recipes;
         });
     }
-    getRecipes(ingredinet, gluten, diary) {
+    getRecipes(ingredinet, diary, gluten) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const urlGetRecipes = `/recipes/${ingredinet}`;

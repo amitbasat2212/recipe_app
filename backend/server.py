@@ -53,19 +53,21 @@ def find_if_sensitivite_in_ingridents(recipe,the_ingeidents_with_sensitivety):
               is_in_or_not=True;
                 
 
-    return is_in_or_not;   
+    return is_in_or_not; 
 
+def adding_recpies_without_sensitive(recipes_by_ingrident,the_ingeidents_with_sensitivety):
+    the_recipes_without_sensitivite=[];
+    for recipe in recipes_by_ingrident:
+        if(not(find_if_sensitivite_in_ingridents(recipe["ingredients"],the_ingeidents_with_sensitivety))):
+                the_recipes_without_sensitivite.append(recipe);      
+
+    return the_recipes_without_sensitivite
 @app.get('/recipes/')
 def filter_recipes_by_sensitivity(sensitivity,ingredient):
-    try:
-       the_recipes_without_sensitivite=[];
-
+    try:    
        recipes_by_ingrident=get_recipes_from_api(ingredient)
        the_ingeidents_with_sensitivety=adding_items_to_list_by_param(queries.find_the_recipes_by_sensitivity(sensitivity),"ingredient_name");
-       
-       for recipe in recipes_by_ingrident:
-        if(not(find_if_sensitivite_in_ingridents(recipe["ingredients"],the_ingeidents_with_sensitivety))):
-                the_recipes_without_sensitivite.append(recipe);
+       the_recipes_without_sensitivite=adding_recpies_without_sensitive(recipes_by_ingrident,the_ingeidents_with_sensitivety)
        
        return the_recipes_without_sensitivite;  
     except TypeError as e:

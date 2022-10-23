@@ -29,7 +29,7 @@ def get_recipes_from_api(ingredient):
     return recipes_by_ingrident;
 
 @app.get('/recipes/{ingredient}')
-def relvent_recipes_by_ingrident():
+def relvent_recipes_by_ingrident(ingredient):
    
     try:
        recipes_by_ingrident=get_recipes_from_api(ingredient)      
@@ -73,4 +73,4 @@ def filter_recipes_by_sensitivity(sensitivity,ingredient):
 
 
 if __name__ == "__main__":
-     uvicorn.run("server:app", host="0.0.0.0", port=8000,reload=True)
+     uvicorn.run("server:app", host="0.0.0.0", port=8010,reload=True)

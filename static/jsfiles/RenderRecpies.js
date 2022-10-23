@@ -5,9 +5,9 @@ class Render {
     }
     RenderTheRecipes(Resepics) {
         this.RenderEmptyRecipes();
-        const source = $('#playerstatus_tamplate').html();
+        const source = $('#recipes_tamplate').html();
         const template = Handlebars.compile(source);
-        const newHTML = template({ status: PlayerStatus });
-        $('#row_status_container').append(newHTML);
+        const newHTML = template({ results: Resepics });
+        $('#row_container').append(newHTML);
     }
 }
